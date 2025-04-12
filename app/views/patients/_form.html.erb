@@ -1,0 +1,62 @@
+<%= form_with(model: patient) do |form| %>
+  <% if patient.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+        <% patient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :dob, style: "display: block" %>
+    <%= form.date_field :dob %>
+  </div>
+
+  <div>
+    <%= form.label :is_alive, style: "display: block" %>
+    <%= form.check_box :is_alive %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact_first_name, style: "display: block" %>
+    <%= form.text_field :emergency_contact_first_name %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact_last_name, style: "display: block" %>
+    <%= form.text_field :emergency_contact_last_name %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact_phone_number, style: "display: block" %>
+    <%= form.text_field :emergency_contact_phone_number %>
+  </div>
+
+  <div>
+    <%= form.label :phone_number, style: "display: block" %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div>
+    <%= form.label :diagnosis, style: "display: block" %>
+    <%= form.text_field :diagnosis %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

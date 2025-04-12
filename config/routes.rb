@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :receptionists
+  devise_for :doctors
+  devise_for :admins
   get "staff/index"
   resources :appointments
   resources :patients

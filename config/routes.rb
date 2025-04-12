@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "main#index"
   devise_for :receptionists
   devise_for :doctors
   devise_for :admins

@@ -32,22 +32,33 @@
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><%= link_to 'Staff', staff_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Patients', patients_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Appointments', appointments_path, class: 'nav-link' %></li>
+          <li class="nav-item" ><%= link_to 'Staff', staff_path, class: "nav-link #{'active' if request.path.starts_with?('/staff')}" %></li>
+          <li class="nav-item" ><%= link_to 'Patients', patients_path, class: "nav-link #{'active' if request.path.starts_with?('/patients')}" %></li>
+          <li class="nav-item" ><%= link_to 'Appointments', appointments_path, class: "nav-link #{'active' if request.path.starts_with?('/appointments')}" %></li>
           <% if admin_signed_in? %>
             <li class="nav-item"><%= link_to 'Log Out', destroy_admin_session_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= current_admin.first_name %></li>
+            <li>Test</li>
           <% elsif doctor_signed_in? %>
             <li class="nav-item"><%= link_to 'Log Out', destroy_doctor_session_path, class: 'nav-link' %></li>
           <% elsif receptionist_signed_in? %>
             <li class="nav-item"><%= link_to 'Log Out', destroy_receptionist_session_path, class: 'nav-link' %></li>
           <% else %>
-            <li class="nav-item"><%= link_to 'Log In', login_path, class: 'nav-link' %></li>
+            <li class="nav-item" >
+              <%= link_to 'Log In', login_path, class: "nav-link #{'active' if request.path.starts_with?('/login') || request.path.ends_with?('sign_in')}" %>
+              </li>
           <% end %>
         </ul>
       </div>
 
     </nav>
+
+    <!-- Meant to handle failed logins
+    <% flash.each do |key, message| %>
+      <div class="alert <%= key %>"><%= message %></div>
+    <% end %>
+    -->
+
     <%= yield %>
 
     <!-- Bootstrap JavaScript -->

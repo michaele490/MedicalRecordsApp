@@ -1,14 +1,18 @@
-<h2>Log in</h2>
+<h2><%= @role %> Log In</h2>
+
+<% flash.each do |key, message| %>
+  <div class="alert <%= key %>"><%= message %></div>
+<% end %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password %>
   </div>
 
   <% if devise_mapping.rememberable? %>

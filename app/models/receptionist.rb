@@ -3,4 +3,6 @@ class Receptionist < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  include PasswordRequirements
 end

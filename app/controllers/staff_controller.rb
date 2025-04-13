@@ -1,6 +1,6 @@
 class StaffController < ApplicationController
   before_action :admin_should_exist, only: [ :index ]
-  before_action :authorize_admin!, only: [ :index ]
+  before_action :authenticate_admin!, only: [ :index ]
   def index
   end
 

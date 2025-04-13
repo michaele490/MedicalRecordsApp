@@ -42,7 +42,7 @@
           <% elsif receptionist_signed_in? %>
             <li class="nav-item"><%= link_to 'Log Out', destroy_receptionist_session_path, class: 'nav-link' %></li>
           <% else %>
-            <li class="nav-item"><%= link_to 'Log In', '#', class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to 'Log In', login_path, class: 'nav-link' %></li>
           <% end %>
         </ul>
       </div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :receptionists
   devise_for :doctors
   devise_for :admins
+  get "login", to: "main#login"
   get "staff/index"
   get "staff", to: "staff#index"
   resources :appointments

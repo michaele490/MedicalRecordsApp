@@ -4,13 +4,43 @@
 
 <h1>Patients</h1>
 
-<div id="patients">
-  <% @patients.each do |patient| %>
-    <%= render patient %>
-    <p>
-      <%= link_to "Show this patient", patient %>
-    </p>
-  <% end %>
-</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="d-flex justify-content-center mt-5">
+      <% if receptionist_signed_in? %>
+        <%= link_to "Add New patient", new_patient_path, class: 'btn btn-primary' %>
+      <% else %>
+        <p>Log in as receptionist to add new patients</p>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+      <% unless @patients.any? %>
+        <p class="text-center"><i>No patients found</i></p>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to "New patient", new_patient_path %>
+  <div class="row justify-content-center mt-5">
+    .col-md-8
+      <table class="table table-striped text-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Is Alive</th>
+            <th class="col">Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @patients.each do |patient| %>
+            <tr id="<%= dom_id patient %>">
+              <td><%= link_to patient.full_name, patient, class: 'row-link' %></td>
+              <td><%= patient.dob %></td>
+              <td><%= patient.is_alive %></td>
+              <td><%= patient.phone_number %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>

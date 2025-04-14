@@ -1,5 +1,20 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_doctor_or_receptionist!
   before_action :set_patient, only: %i[ show edit update destroy ]
+
+  # Making sure only signed in doctors or receptionits can access the patients pages
+  #=begin
+
+  def authenticate_doctor_or_receptionist!
+    # puts "🔍 doctor_signed_in?: #{doctor_signed_in?}"
+    # puts "🔍 receptionist_signed_in?: #{receptionist_signed_in?}"
+
+    unless doctor_signed_in? || receptionist_signed_in?
+      redirect_to root_path, alert: "Please sign into doctor or receptionist account to access patients."
+    end
+  end
+  #=end
+  #
 
   # GET /patients or /patients.json
   def index

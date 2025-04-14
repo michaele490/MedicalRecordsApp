@@ -6,6 +6,12 @@ class Receptionist < ApplicationRecord
 
   include PasswordRequirements
 
+  ROLE = "Receptionist".freeze
+
+  def role
+    ROLE
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

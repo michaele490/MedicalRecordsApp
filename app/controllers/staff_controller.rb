@@ -2,6 +2,9 @@ class StaffController < ApplicationController
   before_action :admin_should_exist, only: [ :index ]
   before_action :authenticate_admin!, only: [ :index ]
   def index
+    @admins = Admin.all
+    @receptionists = Receptionist.all
+    @doctors = Doctor.all
   end
 
   def admin_should_exist

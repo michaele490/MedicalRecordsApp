@@ -6,6 +6,12 @@ class Doctor < ApplicationRecord
 
   include PasswordRequirements
 
+  ROLE = "Doctor".freeze
+
+  def role
+    ROLE
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

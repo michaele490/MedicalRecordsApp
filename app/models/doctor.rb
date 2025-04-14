@@ -5,4 +5,8 @@ class Doctor < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   include PasswordRequirements
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -31,7 +31,7 @@
 
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto">
           <li class="nav-item" ><%= link_to 'Staff', staff_path, class: "nav-link #{'active' if request.path.starts_with?('/staff')}" %></li>
           <li class="nav-item" ><%= link_to 'Patients', patients_path, class: "nav-link #{'active' if request.path.starts_with?('/patients')}" %></li>
           <li class="nav-item" ><%= link_to 'Appointments', appointments_path, class: "nav-link #{'active' if request.path.starts_with?('/appointments')}" %></li>
@@ -47,6 +47,39 @@
               </li>
           <% end %>
         </ul>
+
+        <!--
+        <% if admin_signed_in? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link disabled text-light">Hello, <%= current_admin.first_name %></span>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Log Out', destroy_admin_session_path, class: 'nav-link' %>
+            </li>
+          </ul>
+        <% end %>-
+        -->
+
+        <% if admin_signed_in? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link disabled text-light"><%= current_admin.full_name %></span>
+            </li>
+          </ul>
+        <% elsif receptionist_signed_in? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link disabled text-light"><%= current_receptionist.full_name %></span>
+            </li>
+          </ul>
+        <% elsif doctor_signed_in? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link disabled text-light"><%= current_doctor.full_name %></span>
+            </li>
+          </ul>
+        <% end %>
       </div>
 
     </nav>

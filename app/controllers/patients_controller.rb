@@ -14,11 +14,11 @@ class PatientsController < ApplicationController
     end
   end
 
-  # GET /patients or /patients.json
   def index
     if params[:search]
-      # SQL injection vulnerability
-      @patients = Patient.find_by_sql("SELECT * FROM patients WHERE first_name LIKE '%#{params[:search]}%' OR last_name LIKE '%#{params[:search]}%' OR diagnosis LIKE '%#{params[:search]}%'")
+      # Fixing SQL injection vulnerability using Active Record query methods
+      @patients = Patient.where("first_name LIKE :search OR last_name LIKE :search OR diagnosis LIKE :search", 
+                              search: "%#{Patient.sanitize_sql_like(params[:search])}%")
     else
       @patients = Patient.all
     end

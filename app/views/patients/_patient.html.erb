@@ -1,12 +1,12 @@
 <div id="<%= dom_id patient %>">
   <p>
     <strong>First name:</strong>
-    <%= patient.first_name %>
+    <%= sanitize patient.first_name, tags: [], attributes: [] %>
   </p>
 
   <p>
     <strong>Last name:</strong>
-    <%= patient.last_name %>
+    <%= sanitize patient.last_name, tags: [], attributes: [] %>
   </p>
 
   <p>
@@ -21,27 +21,27 @@
 
   <p>
     <strong>Emergency contact full name:</strong>
-    <%= patient.emergency_contact_full_name %>
+    <%= sanitize patient.emergency_contact_full_name, tags: [], attributes: [] %>
   </p>
 
   <p>
     <strong>Emergency contact phone number:</strong>
-    <%= patient.emergency_contact_phone_number %>
+    <%= sanitize patient.emergency_contact_phone_number, tags: [], attributes: [] %>
   </p>
 
   <p>
     <strong>Phone number:</strong>
-    <%= patient.phone_number %>
+    <%= sanitize patient.phone_number, tags: [], attributes: [] %>
   </p>
 
   <p>
     <strong>Diagnosis:</strong>
-    <%= patient.diagnosis %>
+    <%= sanitize patient.diagnosis, tags: ['b', 'i', 'em', 'strong'], attributes: [] %>
   </p>
 
   <p>
     <strong>Treatment:</strong>
-    <%= patient.treatment %>
+    <%= sanitize patient.treatment, tags: ['b', 'i', 'em', 'strong', 'ul', 'li', 'p'], attributes: [] %>
   </p>
 
   <p>

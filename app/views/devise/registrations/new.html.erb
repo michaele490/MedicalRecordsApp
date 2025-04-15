@@ -22,9 +22,16 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <i class="fas fa-info-circle" 
+         data-bs-toggle="tooltip" 
+         data-bs-placement="right"
+         title="Password must be at least 8 characters and contain at least one uppercase letter and one lowercase letter">
+      </i>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, 
+                        autocomplete: "new-password",
+                        pattern: "(?=.*[a-z])(?=.*[A-Z]).{8,}",
+                        title: "Must contain at least one uppercase and lowercase letter, and be at least 8 characters long" %>
   </div>
 
   <div class="field">

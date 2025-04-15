@@ -1,12 +1,14 @@
+<!-- Contains stored xss vulnerabilities with html_safe and raw -->
+
 <div id="<%= dom_id patient %>">
   <p>
     <strong>First name:</strong>
-    <%= patient.first_name %>
+    <%= patient.first_name.html_safe %>
   </p>
 
   <p>
     <strong>Last name:</strong>
-    <%= patient.last_name %>
+    <%= patient.last_name.html_safe %>
   </p>
 
   <p>
@@ -21,27 +23,27 @@
 
   <p>
     <strong>Emergency contact full name:</strong>
-    <%= patient.emergency_contact_full_name %>
+    <%= patient.emergency_contact_full_name.html_safe %>
   </p>
 
   <p>
     <strong>Emergency contact phone number:</strong>
-    <%= patient.emergency_contact_phone_number %>
+    <%= patient.emergency_contact_phone_number.html_safe %>
   </p>
 
   <p>
     <strong>Phone number:</strong>
-    <%= patient.phone_number %>
+    <%= patient.phone_number.html_safe %>
   </p>
 
   <p>
     <strong>Diagnosis:</strong>
-    <%= patient.diagnosis %>
+    <%= raw patient.diagnosis %>
   </p>
 
   <p>
     <strong>Treatment:</strong>
-    <%= patient.treatment %>
+    <%= raw patient.treatment %>
   </p>
 
   <p>

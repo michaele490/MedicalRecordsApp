@@ -14,7 +14,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # GET /patients or /patients.json
   def index
     if params[:search]
       # SQL injection vulnerability

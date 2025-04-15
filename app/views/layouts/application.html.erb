@@ -31,15 +31,53 @@
 
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><%= link_to 'Staff', staff_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Patients', patients_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Appointments', appointments_path, class: 'nav-link' %></li>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" ><%= link_to 'Staff', staff_path, class: "nav-link #{'active' if request.path.starts_with?('/staff')}" %></li>
+          <li class="nav-item" ><%= link_to 'Patients', patients_path, class: "nav-link #{'active' if request.path.starts_with?('/patients')}" %></li>
+          <!-- Removed appointments link, not necessary anymore >
+          <!--<li class="nav-item" ><%= link_to 'Appointments', appointments_path, class: "nav-link #{'active' if request.path.starts_with?('/appointments')}" %></li>-->
+          <% if admin_signed_in? %>
+            <li class="nav-item"><%= link_to 'Log Out', destroy_admin_session_path, class: 'nav-link' %></li>
+          <% elsif doctor_signed_in? %>
+            <li class="nav-item"><%= link_to 'Log Out', destroy_doctor_session_path, class: 'nav-link' %></li>
+          <% elsif receptionist_signed_in? %>
+            <li class="nav-item"><%= link_to 'Log Out', destroy_receptionist_session_path, class: 'nav-link' %></li>
+          <% else %>
+            <li class="nav-item" >
+              <%= link_to 'Log In', login_path, class: "nav-link #{'active' if request.path.starts_with?('/login') || request.path.ends_with?('sign_in')}" %>
+              </li>
+          <% end %>
         </ul>
+
+        <% if admin_signed_in? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link disabled text-light"><b>Admin:</b> <%= current_admin.full_name %></span>
+            </li>
+          </ul>
+        <% elsif receptionist_signed_in? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link disabled text-light"><b>Receptionist:</b> <%= current_receptionist.full_name %></span>
+            </li>
+          </ul>
+        <% elsif doctor_signed_in? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link disabled text-light"><b>Doctor:</b> <%= current_doctor.full_name %></span>
+            </li>
+          </ul>
+        <% end %>
       </div>
 
     </nav>
+    
     <%= yield %>
+    <!--
+    <% flash.each do |key, message| %>
+      <div class="alert <%= key %>"><%= message %></div>
+    <% end %>
+    -->
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>

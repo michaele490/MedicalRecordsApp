@@ -1,0 +1,12 @@
+<h1>Log In</h1>
+<p class="text-center mt-5"><i>Select Your Role</i></p>
+
+<div class="text-center mb-3">
+    <% flash.each do |key, message| %>
+    <div class="alert <%= key %>"><b><%= message %></b></div>
+    <% end %>
+</div>
+
+<%= link_to 'Admin', new_admin_session_path, class: 'btn btn-primary mb-3 mx-auto mt-5 d-block', style: 'width: 200px' %>
+<%= link_to 'Doctor', new_doctor_session_path, class: 'btn btn-primary mb-3 mx-auto d-block', style: 'width: 200px' %>
+<%= link_to 'Receptionist', new_receptionist_session_path, class: 'btn btn-primary mb-3 mx-auto d-block', style: 'width: 200px' %>

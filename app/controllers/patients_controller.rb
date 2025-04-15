@@ -10,11 +10,9 @@ class PatientsController < ApplicationController
     # puts "🔍 receptionist_signed_in?: #{receptionist_signed_in?}"
 
     unless doctor_signed_in? || receptionist_signed_in?
-      redirect_to root_path, alert: "Please sign into doctor or receptionist account to access patients."
+      redirect_to login_path, alert: "Please sign into doctor or receptionist account to access patients."
     end
   end
-  #=end
-  #
 
   # GET /patients or /patients.json
   def index
@@ -80,6 +78,6 @@ class PatientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def patient_params
-      params.require(:patient).permit(:first_name, :last_name, :dob, :is_alive, :emergency_contact_first_name, :emergency_contact_last_name, :emergency_contact_phone_number, :phone_number, :diagnosis)
+      params.require(:patient).permit(:first_name, :last_name, :dob, :is_alive, :emergency_contact_first_name, :emergency_contact_last_name, :emergency_contact_phone_number, :phone_number, :diagnosis, :treatment, :next_appointment_date)
     end
 end

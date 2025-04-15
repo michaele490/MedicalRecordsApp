@@ -34,21 +34,19 @@
     <%= patient.phone_number %>
   </p>
 
-  <% if doctor_signed_in? %>
-    <p>
-      <strong>Diagnosis:</strong>
-      <%= patient.diagnosis %>
-    </p>
+  <p>
+    <strong>Diagnosis:</strong>
+    <%= patient.diagnosis %>
+  </p>
 
-    <p>
-      <strong>Treatment:</strong>
-      <%= patient.treatment %>
-    </p>
+  <p>
+    <strong>Treatment:</strong>
+    <%= patient.treatment %>
+  </p>
 
-    <p>
-      <strong>Next Appointment Date:</strong>
-      <%= patient.next_appointment_date %>
-    </p>
-  <% end %>
+  <p>
+    <strong>Next Appointment Date:</strong>
+    <%= patient.next_appointment_date %>
+  </p>
 
 </div>

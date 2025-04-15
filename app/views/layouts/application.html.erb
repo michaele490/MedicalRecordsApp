@@ -34,7 +34,8 @@
         <ul class="navbar-nav me-auto">
           <li class="nav-item" ><%= link_to 'Staff', staff_path, class: "nav-link #{'active' if request.path.starts_with?('/staff')}" %></li>
           <li class="nav-item" ><%= link_to 'Patients', patients_path, class: "nav-link #{'active' if request.path.starts_with?('/patients')}" %></li>
-          <li class="nav-item" ><%= link_to 'Appointments', appointments_path, class: "nav-link #{'active' if request.path.starts_with?('/appointments')}" %></li>
+          <!-- Removed appointments link, not necessary anymore >
+          <!--<li class="nav-item" ><%= link_to 'Appointments', appointments_path, class: "nav-link #{'active' if request.path.starts_with?('/appointments')}" %></li>-->
           <% if admin_signed_in? %>
             <li class="nav-item"><%= link_to 'Log Out', destroy_admin_session_path, class: 'nav-link' %></li>
           <% elsif doctor_signed_in? %>

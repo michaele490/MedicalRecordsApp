@@ -10,11 +10,9 @@ class PatientsController < ApplicationController
     # puts "🔍 receptionist_signed_in?: #{receptionist_signed_in?}"
 
     unless doctor_signed_in? || receptionist_signed_in?
-      redirect_to root_path, alert: "Please sign into doctor or receptionist account to access patients."
+      redirect_to login_path, alert: "Please sign into doctor or receptionist account to access patients."
     end
   end
-  #=end
-  #
 
   # GET /patients or /patients.json
   def index

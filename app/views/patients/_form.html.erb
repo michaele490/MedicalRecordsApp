@@ -11,54 +11,65 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
-  </div>
+  <% if receptionist_signed_in? %>
+    <div class="mb-3">
+      <%= form.label :first_name, style: "display: block" %>
+      <%= form.text_field :first_name %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :last_name, style: "display: block" %>
+      <%= form.text_field :last_name %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :dob, style: "display: block" %>
-    <%= form.date_field :dob %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :dob, style: "display: block" %>
+      <%= form.date_field :dob %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :is_alive, 'Is patient alive', style: "display: block" %>
-    <%= form.check_box :is_alive %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :is_alive, 'Is patient alive', style: "display: block" %>
+      <%= form.check_box :is_alive %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :phone_number, style: "display: block" %>
-    <%= form.text_field :phone_number %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :phone_number, style: "display: block" %>
+      <%= form.text_field :phone_number %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :emergency_contact_first_name, style: "display: block" %>
-    <%= form.text_field :emergency_contact_first_name %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :emergency_contact_first_name, style: "display: block" %>
+      <%= form.text_field :emergency_contact_first_name %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :emergency_contact_last_name, style: "display: block" %>
-    <%= form.text_field :emergency_contact_last_name %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :emergency_contact_last_name, style: "display: block" %>
+      <%= form.text_field :emergency_contact_last_name %>
+    </div>
 
-  <div class="mb-3">
-    <%= form.label :emergency_contact_phone_number, style: "display: block" %>
-    <%= form.text_field :emergency_contact_phone_number %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :emergency_contact_phone_number, style: "display: block" %>
+      <%= form.text_field :emergency_contact_phone_number %>
+    </div>
+  <% end %>
 
-  <!-- Doctor should be the one to add a diagnosis 
-  <div class="mb-3">
-    <%= form.label :diagnosis, style: "display: block" %>
-    <%= form.text_field :diagnosis %>
-  </div> 
-  -->
+  <% if doctor_signed_in? %>
+    <div class="mb-3">
+      <%= form.label :diagnosis, style: "display: block" %>
+      <%= form.text_field :diagnosis %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :treatment, style: "display: block" %>
+      <%= form.text_area :treatment %>
+    </div>
+    
+    <div class="mb-3">
+      <%= form.label :next_appointment_date, style: "display: block" %>
+      <%= form.date_field :next_appointment_date %>
+  <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-success' %>
   </div>
 <% end %>

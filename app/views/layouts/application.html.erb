@@ -71,7 +71,18 @@
       </div>
 
     </nav>
-    
+
+    <!-- Fixes DOM XSS vulnerability in unsecure_branch by using plain text-->  
+    <div id="message-box"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var fragment = window.location.hash.substr(1);
+        if (fragment) {
+          document.getElementById('message-box').textContent = decodeURIComponent(fragment);
+        }
+      });
+    </script>
+
     <%= yield %>
     <!--
     <% flash.each do |key, message| %>

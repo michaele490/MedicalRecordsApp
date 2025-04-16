@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_14_190740) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_16_092204) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,16 +23,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_14_190740) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
-  create_table "appointments", force: :cascade do |t|
-    t.datetime "date"
-    t.string "notes"
-    t.string "name"
-    t.integer "patient_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -78,6 +68,4 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_14_190740) do
     t.index ["email"], name: "index_receptionists_on_email", unique: true
     t.index ["reset_password_token"], name: "index_receptionists_on_reset_password_token", unique: true
   end
-
-  add_foreign_key "appointments", "patients"
 end

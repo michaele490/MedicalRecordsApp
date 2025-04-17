@@ -4,6 +4,8 @@
   <div class="alert <%= key %>"><%= message %></div>
 <% end %>
 
+<p>If you don't have an account contact admin to grant you access to sign up through 'Staff' link which they have access to</p>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />

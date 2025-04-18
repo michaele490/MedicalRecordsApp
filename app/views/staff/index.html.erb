@@ -21,7 +21,7 @@
                     <tbody>
                         <% (@doctors + @receptionists).each do |staff| %>
                             <tr>
-                                <td><%= link_to staff.full_name,'#', class: 'row-link' %></td>
+                                <td><%= staff.full_name %></td>
                                 <td><%= staff.email %></td>
                                 <td><%= staff.role %></td>
                             </tr>

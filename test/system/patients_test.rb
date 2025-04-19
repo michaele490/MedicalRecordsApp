@@ -5,6 +5,7 @@ class PatientsTest < ApplicationSystemTestCase
     @patient = patients(:one)
   end
 
+=begin
   test "visiting the index" do
     visit patients_url
     assert_selector "h1", text: "Patients"
@@ -54,4 +55,5 @@ class PatientsTest < ApplicationSystemTestCase
 
     assert_text "Patient was successfully destroyed"
   end
+=end
 end

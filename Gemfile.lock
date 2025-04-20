@@ -322,7 +322,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
-  webdrivers (~> 5.3)
+  webdrivers
 
 BUNDLED WITH
    2.5.20
